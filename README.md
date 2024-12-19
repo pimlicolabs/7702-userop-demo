@@ -22,9 +22,33 @@ pnpm run start
   "jsonrpc": "2.0",
   "method": "pimlico_experimental_estimateUserOperationGas7702",
   "params": [
-    userOperation,
+    {
+      "sender",
+      "nonce",
+      "factory",
+      "factoryData",
+      "callData",
+      "callGasLimit",
+      "verificationGasLimit",
+      "preVerificationGas",
+      "maxPriorityFeePerGas",
+      "maxFeePerGas",
+      "paymaster",
+      "paymasterVerificationGasLimit",
+      "paymasterPostOpGasLimit",
+      "paymasterData",
+      "signature"
+    },
     entryPoint,
-    signedAuthorization,
+    { // Signed Authorization
+        contractAddress: '0x2A7Df271B4B48753EDd983ba163cB22374C7Bc89',
+        chainId: '0xde9fb',
+        nonce: '0x',
+        r: '0xfb7daf8631a9a713b4d0d3255b2ee2ebfd7019435d156db7906a5d3ec33c566e',
+        s: '0x77874c6e19382a1a48b433f9dad5ac617dd18fd600de4053f979904694a5a138',
+        v: '0x1b',
+        yParity: '0x'
+    },
     stateOverrides
   ],
   "id": 1
@@ -37,9 +61,33 @@ pnpm run start
   "jsonrpc": "2.0",
   "method": "pimlico_experimental_sendUserOperation7702",
   "params": [
-    userOperation,
+    {
+      "sender",
+      "nonce",
+      "factory",
+      "factoryData",
+      "callData",
+      "callGasLimit",
+      "verificationGasLimit",
+      "preVerificationGas",
+      "maxPriorityFeePerGas",
+      "maxFeePerGas",
+      "paymaster",
+      "paymasterVerificationGasLimit",
+      "paymasterPostOpGasLimit",
+      "paymasterData",
+      "signature"
+    },
     entryPoint,
-    signedAuthorization
+    { // Signed Authorization
+        contractAddress: '0x2A7Df271B4B48753EDd983ba163cB22374C7Bc89',
+        chainId: '0xde9fb',
+        nonce: '0x',
+        r: '0xfb7daf8631a9a713b4d0d3255b2ee2ebfd7019435d156db7906a5d3ec33c566e',
+        s: '0x77874c6e19382a1a48b433f9dad5ac617dd18fd600de4053f979904694a5a138',
+        v: '0x1b',
+        yParity: '0x'
+    },
   ],
   "id": 1
 }
