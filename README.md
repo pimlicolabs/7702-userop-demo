@@ -16,9 +16,7 @@ pnpm run start
 
 ### RPC Schemas
 
-pimlico_experimental_estimateUserOperationGas7702
-
-Inputs:
+#### pimlico_experimental_estimateUserOperationGas7702
 ```
 {
   "jsonrpc": "2.0",
@@ -33,9 +31,7 @@ Inputs:
 }
 ```
 
-pimlico_experimental_sendUserOperation7702
-
-Inputs:
+#### pimlico_experimental_sendUserOperation7702
 ```
 {
   "jsonrpc": "2.0",
