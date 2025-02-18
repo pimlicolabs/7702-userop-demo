@@ -103,7 +103,7 @@ const main = async () => {
 		// @ts-ignore
 		method: "pimlico_experimental_estimateUserOperationGas7702",
 		params: [
-			deepHexlify({ ...userOperation, eip7702Auth: signedAuthorization }),
+			deepHexlify({ ...userOperation, eip7702auth: signedAuthorization }),
 			// @ts-ignore
 			entryPoint07Address,
 		],
@@ -129,7 +129,7 @@ const main = async () => {
 		method: "pimlico_experimental_sendUserOperation7702",
 		// @ts-ignore
 		params: [
-			deepHexlify({ ...userOperation, eip7702Auth: signedAuthorization }),
+			deepHexlify({ ...userOperation, eip7702auth: signedAuthorization }),
 			// @ts-ignore
 			entryPoint07Address,
 		],

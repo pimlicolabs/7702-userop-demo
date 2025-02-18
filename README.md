@@ -41,7 +41,7 @@ pnpm run start
       "paymasterPostOpGasLimit",
       "paymasterData",
       "signature",
-      "eip7702Auth": {
+      "eip7702auth": {
           contractAddress: '0x2A7Df271B4B48753EDd983ba163cB22374C7Bc89',
           chainId: '0xde9fb',
           nonce: '0x',
@@ -80,7 +80,7 @@ pnpm run start
       "paymasterPostOpGasLimit",
       "paymasterData",
       "signature",
-      "eip7702Auth": {
+      "eip7702auth": {
           contractAddress: '0x2A7Df271B4B48753EDd983ba163cB22374C7Bc89',
           chainId: '0xde9fb',
           nonce: '0x',
