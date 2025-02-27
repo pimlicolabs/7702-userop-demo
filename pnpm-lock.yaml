@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      dotenv:
+        specifier: ^16.4.7
+        version: 16.4.7
       permissionless:
         specifier: ^0.2.21
         version: 0.2.21(viem@2.21.53)
@@ -205,6 +208,10 @@ packages:
       zod:
         optional: true
 
+  dotenv@16.4.7:
+    resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
+    engines: {node: '>=12'}
+
   esbuild@0.23.1:
     resolution: {integrity: sha512-VVNz/9Sa0bs5SELtn3f7qhJCDPCF5oMEl5cO9/SSinpE9hbPVvxbd572HH5AKiP7WD8INO53GgfDDhRjkylHEg==}
     engines: {node: '>=18'}
@@ -376,6 +383,8 @@ snapshots:
       undici-types: 6.20.0
 
   abitype@1.0.6: {}
+
+  dotenv@16.4.7: {}
 
   esbuild@0.23.1:
     optionalDependencies:
