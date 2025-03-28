@@ -12,7 +12,7 @@ import {
 	privateKeyToAddress,
 } from "viem/accounts";
 import { odysseyTestnet } from "viem/chains";
-import { eip7702Actions, SignedAuthorization } from "viem/experimental";
+import { SignedAuthorization } from "viem";
 import { toSimpleSmartAccount } from "permissionless/accounts";
 import { createPimlicoClient } from "permissionless/clients/pimlico";
 import { createSmartAccountClient, deepHexlify } from "permissionless";
@@ -40,7 +40,7 @@ const walletClient = createWalletClient({
 	account: privateKeyToAccount(PRIVATE_KEY),
 	chain: odysseyTestnet,
 	transport: http(),
-}).extend(eip7702Actions());
+});
 
 const publicClient = createPublicClient({
 	chain: odysseyTestnet,
@@ -51,16 +51,15 @@ const pimlicoClient = createPimlicoClient({
 	transport: http(pimlicoUrl),
 });
 
-
-type UserOperationWithEip7702Auth = UserOperation & { eip7702Auth: SignedAuthorization };
+type UserOperationWithEip7702Auth = UserOperation & {
+	eip7702Auth: SignedAuthorization;
+};
 const main = async () => {
 	// Source code in contracts/src/SimpleAccount7702.sol
 	const SIMPLE_7702_ACCOUNT_IMPLEMENTATION =
 		"0x2A7Df271B4B48753EDd983ba163cB22374C7Bc89";
 
 	console.log(`sender: ${privateKeyToAddress(PRIVATE_KEY)}`);
-
-	
 
 	const smartAccount = await toSimpleSmartAccount({
 		address: walletClient.account.address,
@@ -87,14 +86,16 @@ const main = async () => {
 	console.log("Retrieved gas price info:", gasInfo);
 
 	console.log({
-		size: size("0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-	})
+		size: size(
+			"0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+		),
+	});
 
 	userOperation = {
 		...userOperation,
 		...gasInfo,
 		eip7702Auth: {
-			contractAddress: SIMPLE_7702_ACCOUNT_IMPLEMENTATION,
+			address: SIMPLE_7702_ACCOUNT_IMPLEMENTATION,
 			chainId: odysseyTestnet.id,
 			nonce: 0,
 			r: "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -117,14 +118,14 @@ const main = async () => {
 	// Estimate gas.
 	const gasEstimates = (await smartAccountClient.request({
 		method: "eth_estimateUserOperationGas",
-		params: [
-			deepHexlify({ ...userOperation }),
-			entryPoint07Address,
-		],
+		params: [deepHexlify({ ...userOperation }), entryPoint07Address],
 	})) as EstimateUserOperationGasReturnType;
 	console.log({ gasEstimates });
 
-	userOperation = { ...userOperation, ...gasEstimates } as UserOperationWithEip7702Auth;
+	userOperation = {
+		...userOperation,
+		...gasEstimates,
+	} as UserOperationWithEip7702Auth;
 
 	// Get sponsor fields.
 	const sponsorFields = await pimlicoClient.getPaymasterData({
@@ -134,15 +135,16 @@ const main = async () => {
 	});
 	console.log("Retrieved sponsor fields:", sponsorFields);
 
-	userOperation = { ...userOperation, ...sponsorFields } as UserOperationWithEip7702Auth;
+	userOperation = {
+		...userOperation,
+		...sponsorFields,
+	} as UserOperationWithEip7702Auth;
 
 	const signedAuthorization = await walletClient.signAuthorization({
 		contractAddress: SIMPLE_7702_ACCOUNT_IMPLEMENTATION,
-		delegate: true, // We need to explicitly specify this to allow anyone to sponsor the type 4 transaction.
 	});
 
 	console.log("Signed authorization:", signedAuthorization);
-
 
 	// Sign and send user operation.
 	userOperation.signature = await smartAccount.signUserOperation(userOperation);

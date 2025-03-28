@@ -13,13 +13,13 @@ importers:
         version: 16.4.7
       permissionless:
         specifier: ^0.2.21
-        version: 0.2.21(viem@2.21.53)
+        version: 0.2.21(viem@2.24.1)
       tsx:
         specifier: ^4.19.2
         version: 4.19.2
       viem:
-        specifier: ^2.21.53
-        version: 2.21.53
+        specifier: ^2.24.1
+        version: 2.24.1
     devDependencies:
       '@types/node':
         specifier: ^22.10.1
@@ -177,28 +177,28 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@noble/curves@1.6.0':
-    resolution: {integrity: sha512-TlaHRXDehJuRNR9TfZDNQ45mMEd5dwUwmicsafcIX4SsNiqnCHKjE/1alYPd/lDRVhxdhUAlv8uEhMCI5zjIJQ==}
+  '@noble/curves@1.8.1':
+    resolution: {integrity: sha512-warwspo+UYUPep0Q+vtdVB4Ugn8GGQj8iyB3gnRWsztmUHTI3S1nhdiWNsPUGL0vud7JlRRk1XEu7Lq1KGTnMQ==}
     engines: {node: ^14.21.3 || >=16}
 
-  '@noble/hashes@1.5.0':
-    resolution: {integrity: sha512-1j6kQFb7QRru7eKN3ZDvRcP13rugwdxZqCjbiAVZfIJwgj2A65UmT4TgARXGlXgnRkORLTDTrO19ZErt7+QXgA==}
+  '@noble/hashes@1.7.1':
+    resolution: {integrity: sha512-B8XBPsn4vT/KJAGqDzbwztd+6Yte3P4V7iafm24bxgDe/mlRuK6xmWPuCNrKt2vDafZ8MfJLlchDG/vYafQEjQ==}
     engines: {node: ^14.21.3 || >=16}
 
-  '@scure/base@1.1.9':
-    resolution: {integrity: sha512-8YKhl8GHiNI/pU2VMaofa2Tor7PJRAjwQLBBuilkJ9L5+13yVbC7JO/wS7piioAvPSwR3JKM1IJ/u4xQzbcXKg==}
+  '@scure/base@1.2.4':
+    resolution: {integrity: sha512-5Yy9czTO47mqz+/J8GM6GIId4umdCk1wc1q8rKERQulIoc8VP9pzDcghv10Tl2E7R96ZUx/PhND3ESYUQX8NuQ==}
 
-  '@scure/bip32@1.5.0':
-    resolution: {integrity: sha512-8EnFYkqEQdnkuGBVpCzKxyIwDCBLDVj3oiX0EKUFre/tOjL/Hqba1D6n/8RcmaQy4f95qQFrO2A8Sr6ybh4NRw==}
+  '@scure/bip32@1.6.2':
+    resolution: {integrity: sha512-t96EPDMbtGgtb7onKKqxRLfE5g05k7uHnHRM2xdE6BP/ZmxaLtPek4J4KfVn/90IQNrU1IOAqMgiDtUdtbe3nw==}
 
-  '@scure/bip39@1.4.0':
-    resolution: {integrity: sha512-BEEm6p8IueV/ZTfQLp/0vhw4NPnT9oWf5+28nvmeUICjP99f4vr2d+qc7AVGDDtwRep6ifR43Yed9ERVmiITzw==}
+  '@scure/bip39@1.5.4':
+    resolution: {integrity: sha512-TFM4ni0vKvCfBpohoh+/lY05i9gRbSwXWngAsF4CABQxoaOHijxuaZ2R6cStDQ5CHtHO9aGJTr4ksVJASRRyMA==}
 
   '@types/node@22.10.1':
     resolution: {integrity: sha512-qKgsUwfHZV2WCWLAnVP1JqnpE6Im6h3Y0+fYgMTasNQ7V++CBX5OT1as0g0f+OyubbFqhf6XVNIsmN4IIhEgGQ==}
 
-  abitype@1.0.6:
-    resolution: {integrity: sha512-MMSqYh4+C/aVqI2RQaWqbvI4Kxo5cQV40WQ4QFtDnNzCkqChm8MuENhElmynZlO0qUy/ObkEUaXtKqYnx1Kp3A==}
+  abitype@1.0.8:
+    resolution: {integrity: sha512-ZeiI6h3GnW06uYDLx0etQtX/p8E24UaHHBj57RSjK7YBFe7iuVn07EDpOeP451D06sF27VOz9JJPlIKJmXgkEg==}
     peerDependencies:
       typescript: '>=5.0.4'
       zod: ^3 >=3.22.0
@@ -233,8 +233,8 @@ packages:
     peerDependencies:
       ws: '*'
 
-  ox@0.1.2:
-    resolution: {integrity: sha512-ak/8K0Rtphg9vnRJlbOdaX9R7cmxD2MiSthjWGaQdMk3D7hrAlDoM+6Lxn7hN52Za3vrXfZ7enfke/5WjolDww==}
+  ox@0.6.9:
+    resolution: {integrity: sha512-wi5ShvzE4eOcTwQVsIPdFr+8ycyX+5le/96iAJutaZAvCes1J0+RvpEPg5QDPDiaR0XQQAvZVl7AwqQcINuUug==}
     peerDependencies:
       typescript: '>=5.4.0'
     peerDependenciesMeta:
@@ -260,19 +260,16 @@ packages:
   undici-types@6.20.0:
     resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
 
-  viem@2.21.53:
-    resolution: {integrity: sha512-0pY8clBacAwzc59iV1vY4a6U4xvRlA5tAuhClJCKvqA6rXJzmNMMvxQ0EG79lkHr7WtBEruXz8nAmONXwnq4EQ==}
+  viem@2.24.1:
+    resolution: {integrity: sha512-xptFlc081SIPz+ZNDeb0XS/Nn5PU28onq+im+UxEAPCXTIuL1kfw1GTnV8NhbUNoEONnrwcZNqoI0AT0ADF5XQ==}
     peerDependencies:
       typescript: '>=5.0.4'
     peerDependenciesMeta:
       typescript:
         optional: true
 
-  webauthn-p256@0.0.10:
-    resolution: {integrity: sha512-EeYD+gmIT80YkSIDb2iWq0lq2zbHo1CxHlQTeJ+KkCILWpVy3zASH3ByD4bopzfk0uCwXxLqKGLqp2W4O28VFA==}
-
-  ws@8.18.0:
-    resolution: {integrity: sha512-8VbfWfHLbbwu3+N6OKsOMpBdT4kXPDDB9cJk2bJ6mh9ucxdlnNvH1e+roYkKmN9Nxw2yjz7VzeO9oOz2zJ04Pw==}
+  ws@8.18.1:
+    resolution: {integrity: sha512-RKW2aJZMXeMxVpnZ6bck+RswznaxmzdULiBr6KY7XkTnW8uvt0iT9H5DkHUChXrc+uurzwa0rVI16n/Xzjdz1w==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -359,30 +356,30 @@ snapshots:
   '@esbuild/win32-x64@0.23.1':
     optional: true
 
-  '@noble/curves@1.6.0':
+  '@noble/curves@1.8.1':
     dependencies:
-      '@noble/hashes': 1.5.0
+      '@noble/hashes': 1.7.1
 
-  '@noble/hashes@1.5.0': {}
+  '@noble/hashes@1.7.1': {}
 
-  '@scure/base@1.1.9': {}
+  '@scure/base@1.2.4': {}
 
-  '@scure/bip32@1.5.0':
+  '@scure/bip32@1.6.2':
     dependencies:
-      '@noble/curves': 1.6.0
-      '@noble/hashes': 1.5.0
-      '@scure/base': 1.1.9
+      '@noble/curves': 1.8.1
+      '@noble/hashes': 1.7.1
+      '@scure/base': 1.2.4
 
-  '@scure/bip39@1.4.0':
+  '@scure/bip39@1.5.4':
     dependencies:
-      '@noble/hashes': 1.5.0
-      '@scure/base': 1.1.9
+      '@noble/hashes': 1.7.1
+      '@scure/base': 1.2.4
 
   '@types/node@22.10.1':
     dependencies:
       undici-types: 6.20.0
 
-  abitype@1.0.6: {}
+  abitype@1.0.8: {}
 
   dotenv@16.4.7: {}
 
@@ -422,25 +419,25 @@ snapshots:
     dependencies:
       resolve-pkg-maps: 1.0.0
 
-  isows@1.0.6(ws@8.18.0):
+  isows@1.0.6(ws@8.18.1):
     dependencies:
-      ws: 8.18.0
+      ws: 8.18.1
 
-  ox@0.1.2:
+  ox@0.6.9:
     dependencies:
       '@adraffy/ens-normalize': 1.11.0
-      '@noble/curves': 1.6.0
-      '@noble/hashes': 1.5.0
-      '@scure/bip32': 1.5.0
-      '@scure/bip39': 1.4.0
-      abitype: 1.0.6
+      '@noble/curves': 1.8.1
+      '@noble/hashes': 1.7.1
+      '@scure/bip32': 1.6.2
+      '@scure/bip39': 1.5.4
+      abitype: 1.0.8
       eventemitter3: 5.0.1
     transitivePeerDependencies:
       - zod
 
-  permissionless@0.2.21(viem@2.21.53):
+  permissionless@0.2.21(viem@2.24.1):
     dependencies:
-      viem: 2.21.53
+      viem: 2.24.1
 
   resolve-pkg-maps@1.0.0: {}
 
@@ -455,25 +452,19 @@ snapshots:
 
   undici-types@6.20.0: {}
 
-  viem@2.21.53:
+  viem@2.24.1:
     dependencies:
-      '@noble/curves': 1.6.0
-      '@noble/hashes': 1.5.0
-      '@scure/bip32': 1.5.0
-      '@scure/bip39': 1.4.0
-      abitype: 1.0.6
-      isows: 1.0.6(ws@8.18.0)
-      ox: 0.1.2
-      webauthn-p256: 0.0.10
-      ws: 8.18.0
+      '@noble/curves': 1.8.1
+      '@noble/hashes': 1.7.1
+      '@scure/bip32': 1.6.2
+      '@scure/bip39': 1.5.4
+      abitype: 1.0.8
+      isows: 1.0.6(ws@8.18.1)
+      ox: 0.6.9
+      ws: 8.18.1
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
       - zod
 
-  webauthn-p256@0.0.10:
-    dependencies:
-      '@noble/curves': 1.6.0
-      '@noble/hashes': 1.5.0
-
-  ws@8.18.0: {}
+  ws@8.18.1: {}
