@@ -3,7 +3,6 @@ import {
 	createWalletClient,
 	Hex,
 	http,
-	size,
 	zeroAddress,
 } from "viem";
 import {
@@ -11,7 +10,7 @@ import {
 	privateKeyToAccount,
 	privateKeyToAddress,
 } from "viem/accounts";
-import { odysseyTestnet } from "viem/chains";
+import { bsc } from "viem/chains";
 import { SignedAuthorization } from "viem";
 import { toSimpleSmartAccount } from "permissionless/accounts";
 import { createPimlicoClient } from "permissionless/clients/pimlico";
@@ -25,6 +24,7 @@ import dotenv from "dotenv";
 
 // Load environment variables from .env file
 dotenv.config();
+const chain = bsc;
 
 if (!process.env.PIMLICO_API_KEY) {
 	console.error("need env var PIMLICO_API_KEY");
@@ -33,17 +33,16 @@ if (!process.env.PIMLICO_API_KEY) {
 
 const PRIVATE_KEY = generatePrivateKey();
 
-//const pimlicoUrl = `https://api.pimlico.io/v2/${odysseyTestnet.id}/rpc?apikey=${process.env.PIMLICO_API_KEY}`;
-const pimlicoUrl = `http://0.0.0.0:8080/v2/${odysseyTestnet.id}/rpc?apikey=${process.env.PIMLICO_API_KEY}`;
+const pimlicoUrl = `https://api.pimlico.io/v2/${chain.id}/rpc?apikey=${process.env.PIMLICO_API_KEY}`;
 
 const walletClient = createWalletClient({
 	account: privateKeyToAccount(PRIVATE_KEY),
-	chain: odysseyTestnet,
+	chain,
 	transport: http(),
 });
 
 const publicClient = createPublicClient({
-	chain: odysseyTestnet,
+	chain,
 	transport: http(),
 });
 
@@ -55,9 +54,9 @@ type UserOperationWithEip7702Auth = UserOperation & {
 	eip7702Auth: SignedAuthorization;
 };
 const main = async () => {
-	// Source code in contracts/src/SimpleAccount7702.sol
+	// Source code at contracts/src/SimpleAccount7702.sol
 	const SIMPLE_7702_ACCOUNT_IMPLEMENTATION =
-		"0x2A7Df271B4B48753EDd983ba163cB22374C7Bc89";
+		"0x0E2DAdd8081919CD0534c4144A74204f2dB229ec";
 
 	console.log(`sender: ${privateKeyToAddress(PRIVATE_KEY)}`);
 
@@ -85,18 +84,12 @@ const main = async () => {
 	const gasInfo = (await pimlicoClient.getUserOperationGasPrice()).fast;
 	console.log("Retrieved gas price info:", gasInfo);
 
-	console.log({
-		size: size(
-			"0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-		),
-	});
-
 	userOperation = {
 		...userOperation,
 		...gasInfo,
 		eip7702Auth: {
 			address: SIMPLE_7702_ACCOUNT_IMPLEMENTATION,
-			chainId: odysseyTestnet.id,
+			chainId: chain.id,
 			nonce: 0,
 			r: "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
 			s: "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -108,7 +101,7 @@ const main = async () => {
 	// Fill out stub paymaster data.
 	const stub = await pimlicoClient.getPaymasterStubData({
 		...userOperation,
-		chainId: odysseyTestnet.id,
+		chainId: chain.id,
 		entryPointAddress: entryPoint07Address,
 	});
 	console.log("Retrieved paymaster stub data:", stub);
@@ -130,7 +123,7 @@ const main = async () => {
 	// Get sponsor fields.
 	const sponsorFields = await pimlicoClient.getPaymasterData({
 		...userOperation,
-		chainId: odysseyTestnet.id,
+		chainId: chain.id,
 		entryPointAddress: entryPoint07Address,
 	});
 	console.log("Retrieved sponsor fields:", sponsorFields);
@@ -163,7 +156,7 @@ const main = async () => {
 	console.log("User operation receipt:", receipt);
 
 	console.log(
-		`UserOperation included: https://odyssey-explorer.ithaca.xyz/tx/${receipt.transactionHash}`,
+		`UserOperation included: https://bscscan.com/tx/${receipt.transactionHash}`,
 	);
 };
 
